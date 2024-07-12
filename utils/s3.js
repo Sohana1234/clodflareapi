@@ -11,8 +11,8 @@ export function r2Factory(env) {
   });
 }
 
-export function parseBucketPath(context) {
-  const pathSegments = (context.params.path || []);
+export function parseBucketPath(params) {
+  const pathSegments = (params.path || []);
   const path = decodeURIComponent(pathSegments.join("/"));
 
   return path;
