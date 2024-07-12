@@ -1,9 +1,6 @@
-import { S3Client, parseBucketPath } from "../../../../utils/s3";
+import { r2, parseBucketPath } from "../../../../utils/s3";
 import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
 import { PutObjectCommand } from "@aws-sdk/client-s3";
-
-
-const s3Client = S3Client;
 
 
 export async function onRequestPost(context) {
@@ -11,7 +8,7 @@ export async function onRequestPost(context) {
 
     const bucket = process.env.R2_BUCKET_NAME;
 
-    const url = await getSignedUrl(s3Client, new PutObjectCommand({ Bucket: bucket, Key: key }));
+    const url = await getSignedUrl(r2, new PutObjectCommand({ Bucket: bucket, Key: key }));
  
     return c.json({ key, url });
 }
