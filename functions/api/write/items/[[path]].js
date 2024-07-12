@@ -6,7 +6,7 @@ import { PutObjectCommand } from "@aws-sdk/client-s3";
 const s3Client = S3Client;
 
 
-async function onRequestPost(context) {
+export async function onRequestPost(context) {
     const key = parseBucketPath(context);
 
     const bucket = process.env.R2_BUCKET_NAME;
